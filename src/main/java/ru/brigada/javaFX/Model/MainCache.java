@@ -1,8 +1,6 @@
 package ru.brigada.javaFX.Model;
-
 import java.util.HashMap;
 import java.util.LinkedList;
-
 public abstract class MainCache<K,V> implements Cache<K,V>{
     int sizeMax;
     int curSize = 0;
@@ -33,8 +31,8 @@ public abstract class MainCache<K,V> implements Cache<K,V>{
                 linkedList.add(item);
                 hashMap.put(key, value);
             }
-            addNum++;
         }
+        addNum++;
     }
     public void replace() {}
     public void setAddNum(int num){
@@ -60,6 +58,10 @@ public abstract class MainCache<K,V> implements Cache<K,V>{
     public void clear(){
         this.linkedList.clear();
         this.hashMap.clear();
+        this.sizeMax = 0;
+        this.curSize = 0;
+        this.addNum = 0;
+        this.gotNum = 0;
     }
     @Override
     public int size(){

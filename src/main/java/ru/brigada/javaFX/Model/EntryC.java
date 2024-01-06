@@ -1,14 +1,11 @@
 package ru.brigada.javaFX.Model;
-
-import java.util.Map;
-
 public class EntryC<K,V>{
-    K k;
-    V v;
-    public Object getKey() {
+    private final K k;
+    private final V v;
+    public K getKey() {
         return k;
     }
-    public Object getValue() {
+    public V getValue() {
         return v;
     }
     public EntryC(K k, V v){

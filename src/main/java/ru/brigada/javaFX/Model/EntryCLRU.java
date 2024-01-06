@@ -1,5 +1,4 @@
 package ru.brigada.javaFX.Model;
-
 public class EntryCLRU<K,V> extends EntryC<K,V>{
     private int usedNum;
     EntryCLRU(K k, V v){

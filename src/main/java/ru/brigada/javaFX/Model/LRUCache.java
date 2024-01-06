@@ -1,11 +1,5 @@
 package ru.brigada.javaFX.Model;
-
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-
 public class LRUCache <K,V> extends MainCache<K,V> {
-
     public LRUCache(int sizeMax){
         super(sizeMax);
     }
@@ -31,18 +25,18 @@ public class LRUCache <K,V> extends MainCache<K,V> {
                 linkedList.add(item);
                 hashMap.put(key, value);
             }
-            addNum++;
         }
+        addNum++;
     }
     @Override
     public void replace() {
-        EntryCLRU maxEntry = (EntryCLRU) this.linkedList.getFirst();
+        EntryCLRU minEntry = (EntryCLRU) this.linkedList.getFirst();
         for(EntryC it :linkedList){
-            if(maxEntry.getUsedNum()>((EntryCLRU)it).getUsedNum()){
-                maxEntry =(EntryCLRU)it;
+            if(minEntry.getUsedNum()>((EntryCLRU)it).getUsedNum()){
+                minEntry =(EntryCLRU)it;
             }
         }
-        this.linkedList.remove(maxEntry);
-        this.hashMap.remove(maxEntry.getKey());
+        this.linkedList.remove((EntryC)minEntry);
+        this.hashMap.remove(minEntry.getKey());
     }
 }

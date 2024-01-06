@@ -7,21 +7,19 @@ import ru.brigada.javaFX.Model.RANDCache;
 import java.io.*;
 import java.nio.charset.Charset;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
         String path1 = "src/main/java/ru/brigada/javaFX/text/ruslan-i-lyudmilaTest.txt";
-        test(path1);
+        test(path1,5000,50);
+        String path2 = "src/main/java/ru/brigada/javaFX/text/Zadumavshiysya_Fizika-dlya-chaynikov-_RuLit_Me.txt";
+        test(path2,5000,50);
     }
-    public static void test(String path) {
+    public static void test(String path, int maxi, int di) {
         File file = new File(path);
-        int maxSize = 500;
-        int i = 10;
+        int maxSize =maxi;
+        int i = di;
         System.out.println("Fifo");
         while (i<maxSize) {
             //создаем объект FileReader для объекта File
@@ -44,11 +42,11 @@ public class App
                 exception.printStackTrace();
             }
             System.out.println(fifoCache.sizeMax()+" "+fifoCache.hitPercent());
-            i+=10;
+            i+=di;
         }
         System.out.println("LRU");
-        maxSize = 500;
-        i = 10;
+        maxSize = maxi;
+        i = di;
         while (i<maxSize) {
             //создаем объект FileReader для объекта File
             LRUCache<String,Integer> lruCache = new LRUCache<>(i);
@@ -70,11 +68,11 @@ public class App
                 exception.printStackTrace();
             }
             System.out.println(lruCache.sizeMax()+" "+lruCache.hitPercent());
-            i+=10;
+            i+=100;
         }
         System.out.println("RAND");
-        maxSize = 500;
-        i = 10;
+        maxSize = maxi;
+        i = di;
         while (i<maxSize) {
             //создаем объект FileReader для объекта File
             RANDCache<String,Integer> randCache = new RANDCache<>(i);
@@ -96,7 +94,7 @@ public class App
                 exception.printStackTrace();
             }
             System.out.println(randCache.sizeMax()+" "+randCache.hitPercent());
-            i+=10;
+            i+=di;
         }
     }
 
